@@ -1,9 +1,10 @@
 export const mintNFT = 
 `
 // REPLACE THIS WITH YOUR CONTRACT NAME + ADDRESS
-import BottomShot from 0x7b6adb682517f137 
+import BottomShot from 0x339bebe03deab3a4 
 // This remains the same 
 import NonFungibleToken from 0x631e88ae7f1d7c20
+import MetadataViews from 0x631e88ae7f1d7c20
 
 transaction(
   recipient: Address,
@@ -23,7 +24,7 @@ transaction(
     signer.save(<-collection, to: BottomShot.CollectionStoragePath)
 
     // create a public capability for the collection
-    signer.link<&{NonFungibleToken.CollectionPublic}>(
+    signer.link<&{NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection}>(
       BottomShot.CollectionPublicPath,
       target: BottomShot.CollectionStoragePath
     )
